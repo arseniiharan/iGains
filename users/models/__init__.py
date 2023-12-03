@@ -1,1 +1,1 @@
-from . import users, managers
+from . import users
