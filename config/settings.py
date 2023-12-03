@@ -40,6 +40,14 @@ INSTALLED_APPS += [
 INSTALLED_APPS += [
     'api',
     'common',
+    'users',
+    'services',
+]
+
+AUTH_USER_MODEL = 'users.User'  # importing custom user model from users.models.users
+AUTHENTICATION_BACKENDS = [
+    'users.backends.EmailAuthBackend',
+    'django.contrib.auth.backends.ModelBackend'
 ]
 
 # after apps !
@@ -166,7 +174,7 @@ CORS_COOKIE_SECURE = False
 ##################
 SPECTACULAR_SETTINGS = {
     'TITLE': 'iGains API',
-        'DESCRIPTION': 'None',
+    'DESCRIPTION': 'None',
     'VERSION': '1.0.0',
 
     'SERVE_PERMISSION': [
