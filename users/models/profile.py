@@ -9,13 +9,14 @@ class Profile(models.Model):
         ('F', 'Female'),
         ('O', 'Other'),
     ]
-    user = models.OneToOneField('users.User', models.CASCADE, related_name='profile', verbose_name='user', primary_key=True)
-    age = models.SmallIntegerField(verbose_name='age')
-    gender = models.CharField(verbose_name='gender', choices=GENDER_CHOICES, max_length=1)
-    weight = models.SmallIntegerField(verbose_name='weight')
-    height = models.SmallIntegerField(verbose_name='height')
-    experience = models.BooleanField(verbose_name='experience', default=False)
-    photo = models.ImageField(verbose_name='photo')
+    user = models.OneToOneField('users.User', models.CASCADE, related_name='profile', verbose_name='user',
+                                primary_key=True)
+    age = models.SmallIntegerField(verbose_name='age', null=True, blank=True)
+    gender = models.CharField(verbose_name='gender', choices=GENDER_CHOICES, max_length=1, null=True, blank=True)
+    weight = models.SmallIntegerField(verbose_name='weight', null=True, blank=True)
+    height = models.SmallIntegerField(verbose_name='height', null=True, blank=True)
+    experience = models.BooleanField(verbose_name='experience', default=False, null=True, blank=True)
+    photo = models.ImageField(verbose_name='photo', null=True, blank=True)
 
     class Meta:
         verbose_name = 'User Profile'

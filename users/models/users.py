@@ -1,4 +1,5 @@
 from django.contrib.auth.models import AbstractUser
+import uuid
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -8,6 +9,7 @@ from users.models.profile import Profile
 
 
 class User(AbstractUser):
+    id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False, unique=True)
     username = None
     email = models.EmailField(verbose_name='Email', unique=True, null=True)
 
