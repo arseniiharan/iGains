@@ -30,5 +30,5 @@ class User(AbstractUser):
 # Created a signal function for safe profile creation
 @receiver(post_save, sender=User)
 def post_save_user(sender, instance, created, **kwargs):
-    if not hasattr(instance, 'profile'):
+    if created:
         Profile.objects.create(user=instance)
