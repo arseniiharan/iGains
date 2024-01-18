@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from services.models.favorites import Favorites
 from services.models.musclemap import Exercises
+from services.models.trainings import LatestTraining
 
 
 #########################################################
@@ -19,3 +20,8 @@ class ExercisesAdmin(admin.ModelAdmin):
 @admin.register(Favorites)
 class FavoritesAdmin(admin.ModelAdmin):
     list_display = ('id', 'user_id', 'exercise_id')
+
+
+@admin.register(LatestTraining)
+class TrainingsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user_id', 'exercise_id', 'training_date', 'training_time')
