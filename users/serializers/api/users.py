@@ -4,6 +4,12 @@ from rest_framework import serializers
 from rest_framework.exceptions import ParseError
 from supabase_py import create_client
 
+import environ
+
+root = environ.Path(__file__) - 2
+env = environ.Env()
+
+environ.Env.read_env(env.str(root(), '.env'))
 
 User = get_user_model()
 
@@ -39,7 +45,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
     def create_supabase_user(self, email, password):
         try:
-            supabase = create_client('https://waotqiccymmikmwadsdl.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indhb3RxaWNjeW1taWttd2Fkc2RsIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMDc2OTkzMywiZXhwIjoyMDE2MzQ1OTMzfQ.572s0u-hpWoMC4ayt9Hhby8XFI8hPzZPGqrZfDcBMuc')
+            supabase = create_client(env.str('SUPABASE_URL'), env.str('SUPABASE_KEY'))
             response = supabase.auth.sign_up(email, password)
 
             if response.status_code == 200:

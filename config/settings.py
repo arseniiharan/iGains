@@ -90,8 +90,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # SUPABASE CONNECTION
 #################################
 
-SUPABASE_URL = 'https://waotqiccymmikmwadsdl.supabase.co'
-SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indhb3RxaWNjeW1taWttd2Fkc2RsIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMDc2OTkzMywiZXhwIjoyMDE2MzQ1OTMzfQ.572s0u-hpWoMC4ayt9Hhby8XFI8hPzZPGqrZfDcBMuc'
+SUPABASE_URL = env.str('SUPABASE_URL')
+SUPABASE_KEY = env.str('SUPABASE_KEY')
 
 
 DATABASES = {
